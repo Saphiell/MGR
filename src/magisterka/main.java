@@ -1,5 +1,6 @@
 package magisterka;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class main {
@@ -10,11 +11,20 @@ public class main {
 		LoadFiles l = new LoadFiles();
 		String pathtoFiles = "C:\\Users\\kusja\\workspace\\Magisterka\\src\\Dane pomiarowe";
 		lines = l.load(pathtoFiles);
-		int i = 1;
-		for(String s :lines){
-			System.out.println(i + " " + s );
-			i++;
+		
+		System.out.println(lines);
+		
+		
+		List<String[]> value = new ArrayList<>();
+		l.Separate(lines,value);
+		
+		for(String[] s:value){
+			s[2]+="0";
+				
+			System.out.println(s[2]);
 		}
+		
+		
 	}
 
 }

@@ -34,5 +34,15 @@ public class LoadFiles {
 		return lines;
 	}
 	
+	public void Separate(List<String> list,List<String[]> listofparts){
+		
+		for(String s:list){
+			String[] parts = s.trim().split(" +");
+			
+			listofparts.add(parts);
+		}
+		
+	}
+	
 	
 }
