@@ -3,27 +3,24 @@ package magisterka;
 import java.util.ArrayList;
 import java.util.List;
 
+import magisterka.db.CreateData;
+import magisterka.db.DeleteData;
+import magisterka.db.GetData;
+
 public class main {
 
 	public static void main(String[] args) {
 		
 		List<String> lines;
 		LoadFiles l = new LoadFiles();
-		String pathtoFiles = "C:\\Users\\kusja\\workspace\\Magisterka\\src\\Dane pomiarowe";
-		lines = l.load(pathtoFiles);
 		
-		System.out.println(lines);
-		
-		
-		List<String[]> value = new ArrayList<>();
-		l.Separate(lines,value);
-		
-		for(String[] s:value){
-			s[2]+="0";
-				
-			System.out.println(s[2]);
-		}
-		
+		CreateData cd = new CreateData();
+		DeleteData dd = new DeleteData();
+		GetData gd = new GetData();
+		//cd.addData();
+		//gd.getData();
+		//dd.deleteData();
+	
 		
 	}
 

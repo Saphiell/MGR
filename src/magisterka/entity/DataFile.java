@@ -22,24 +22,24 @@ public class DataFile {
 	private int id;
 	
 	@Column(name = "cordx")
-	private double cordx;
+	private String cordx;
 	
 	@Column(name = "cordy")
-	private double cordy;
+	private String cordy;
 	
 	@Column(name = "value")
-	private double depth;
+	private String depth;
 	
-	@ManyToOne(fetch= FetchType.LAZY,cascade={CascadeType.DETACH,
-			CascadeType.MERGE,
-			CascadeType.PERSIST,
-			CascadeType.REFRESH})
+	@ManyToOne(cascade={CascadeType.DETACH,
+				CascadeType.MERGE,
+				CascadeType.PERSIST,
+				CascadeType.REFRESH})
 	@JoinColumn(name = "folder_id")
 	private Folder folder;
 	
 	public DataFile(){}
 
-	public DataFile(double cordx, double cordy, double depth) {
+	public DataFile(String cordx, String cordy, String depth) {
 		super();
 		this.cordx = cordx;
 		this.cordy = cordy;
@@ -54,27 +54,27 @@ public class DataFile {
 		this.id = id;
 	}
 
-	public double getCordx() {
+	public String getCordx() {
 		return cordx;
 	}
 
-	public void setCordx(double cordx) {
+	public void setCordx(String cordx) {
 		this.cordx = cordx;
 	}
 
-	public double getCordy() {
+	public String getCordy() {
 		return cordy;
 	}
 
-	public void setCordy(double cordy) {
+	public void setCordy(String cordy) {
 		this.cordy = cordy;
 	}
 
-	public double getDepth() {
+	public String getDepth() {
 		return depth;
 	}
 
-	public void setDepth(double depth) {
+	public void setDepth(String depth) {
 		this.depth = depth;
 	}
 
@@ -86,6 +86,7 @@ public class DataFile {
 		this.folder = folder;
 	}
 
+	
 	@Override
 	public String toString() {
 		return "DataFile [id=" + id + ", cordx=" + cordx + ", cordy=" + cordy + ", depth=" + depth + ", folder="

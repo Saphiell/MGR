@@ -1,5 +1,6 @@
 package magisterka.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -12,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+
 @Entity
 @Table(name="folder")
 public class Folder {
@@ -22,19 +24,15 @@ public class Folder {
 	private int id;
 	
 	@Column(name = "folder_name")
-	private double name;
+	private String name;
 	
-	@OneToMany(fetch = FetchType.LAZY,
-			mappedBy="folder",
-			cascade={CascadeType.DETACH,
-					CascadeType.MERGE,
-					CascadeType.PERSIST,
-					CascadeType.REFRESH})
+	@OneToMany(fetch = FetchType.EAGER,mappedBy="folder",
+				cascade=CascadeType.ALL)
 	private List<DataFile> data;
 	
 	public Folder(){}
 
-	public Folder(double name) {
+	public Folder(String name) {
 		super();
 		this.name = name;
 	}
@@ -47,11 +45,11 @@ public class Folder {
 		this.id = id;
 	}
 
-	public double getName() {
+	public String getName() {
 		return name;
 	}
 
-	public void setName(double name) {
+	public void setName(String name) {
 		this.name = name;
 	}
 
@@ -63,9 +61,18 @@ public class Folder {
 		this.data = data;
 	}
 
+	
+	public void addDataFile(DataFile theDataFile){
+		if(data ==null){
+			data = new ArrayList<>();
+		}
+		
+		data.add(theDataFile);
+		theDataFile.setFolder(this);
+	}
 	@Override
 	public String toString() {
-		return "Folder [id=" + id + ", name=" + name + ", data=" + data + "]";
+		return "Folder [id=" + id + ", name=" + name + "]";
 	}
 	
 	

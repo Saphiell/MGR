@@ -39,6 +39,8 @@ public class LoadFiles {
 		for(String s:list){
 			String[] parts = s.trim().split(" +");
 			
+			parts[2]+="0";
+			
 			listofparts.add(parts);
 		}
 		
