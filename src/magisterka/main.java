@@ -6,6 +6,7 @@ import java.util.List;
 import magisterka.db.CreateData;
 import magisterka.db.DeleteData;
 import magisterka.db.GetData;
+import webtools.blabwgwda;
 
 public class main {
 
@@ -21,7 +22,9 @@ public class main {
 		//gd.getData();
 		//dd.deleteData();
 	
-		
+		blabwgwda d = new blabwgwda();
+		String path = d.FolderChooser();
+		System.out.println(path);
 	}
 
 }
