@@ -26,7 +26,7 @@ public class Folder {
 	@Column(name = "folder_name")
 	private String name;
 	
-	@OneToMany(fetch = FetchType.EAGER,mappedBy="folder",
+	@OneToMany(fetch = FetchType.LAZY,mappedBy="folder",
 				cascade=CascadeType.ALL)
 	private List<DataFile> data;
 	

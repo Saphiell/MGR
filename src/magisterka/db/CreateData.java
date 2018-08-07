@@ -7,13 +7,27 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-import magisterka.LoadFiles;
+import filesUtils.ChooseFiles;
+import filesUtils.LoadFiles;
 import magisterka.entity.DataFile;
 import magisterka.entity.Folder;
 
 public class CreateData {
 	
-	public boolean addData(){
+	private ChooseFiles cf;
+	private Session session;
+	private LoadFiles lf;
+	private GetData gd;
+	
+	private List<String> datafromfiles,filesname;
+	private List<String[]> partsfromfiles;
+
+	
+	private String pathtoFiles,foldername;
+	private String[] partsoffolders;
+	
+	
+	public void addData(){
 		
 		SessionFactory factory = new Configuration()
 				.configure("hibernate.cfg.xml")
@@ -21,43 +35,64 @@ public class CreateData {
 				.addAnnotatedClass(Folder.class)
 				.buildSessionFactory();
 		
-		String pathtoFiles = "C:\\Users\\kusja\\workspace\\Magisterka\\src\\Dane pomiarowe";
+		cf = new ChooseFiles();
+		lf = new LoadFiles();
+		 
+		session = factory.getCurrentSession();
+		datafromfiles = new ArrayList<>();
+		partsfromfiles = new ArrayList<>();
 		
+
+		datafromfiles = cf.FolderChooser();
 		
-		Session session = factory.getCurrentSession();
-		List<String> list = new ArrayList<>();
-		List<String[]> listofparts = new ArrayList<>();
-		List<DataFile> datafilelist = new ArrayList<>();
+		/*
+		 * SprawdŸ czy w bazie nie ma plików o tej samej nazwie, jeœli tak to nie dodawaj, jeœli nie ma czêœci to dodaj tylko te co ich nie ma
+		 * Jebaæ foldery, ale przydadz¹ siê 
+		 */
 		
-		LoadFiles lf = new LoadFiles();
-		list = lf.load(pathtoFiles);
-		lf.Separate(list, listofparts);
 		try{
-			Folder folder; //= new Folder("Dane Pomiarowe");
-			DataFile df;
 			
-			
-			session.beginTransaction();
-			System.out.println("Deleting folder");
-			
-			folder = new Folder("Dane Pomiarowe");
-			System.out.println("Adding datafiles to folder list");
-			for(String[] s: listofparts){
-				df = new DataFile(s[0],s[1],s[2]);
-				folder.addDataFile(df);
-				session.save(df);
+			if(datafromfiles!=null){
+				
+				pathtoFiles = cf.getDirectory();
+				foldername = cf.getDirectoryName();
+				filesname = cf.getFilesName();
+				lf.Separate(datafromfiles, partsfromfiles, " ");
+				Folder folder; 
+				DataFile df;
+				List<Folder> fl;
+				
+				session.beginTransaction();
+				
+				fl = session.createQuery("from Folder").getResultList();
+				for(Folder f:fl){
+					if(f.getName().equals(foldername)){
+						System.out.println("Folder name is already taken");
+						
+					}
+					else{
+						folder = new Folder(foldername);
+						System.out.println("Adding datafiles to folder list");
+						for(String[] s: partsfromfiles){
+							df = new DataFile(s[0],s[1],s[2]);
+							folder.addDataFile(df);
+							session.save(df);
+						}
+						session.save(folder);
+					}
+				}
+				
+				session.getTransaction().commit();
+				
+				System.out.println("Done");
 			}
-			session.save(folder);
-			session.getTransaction().commit();
-			
-			System.out.println("Done");
-			
+		}catch(Exception e){
+			e.printStackTrace();
 		}finally{
+		
 			session.close();
 			factory.close();
-		}
+		}	
 		
-		return false;
 	}
-
 }

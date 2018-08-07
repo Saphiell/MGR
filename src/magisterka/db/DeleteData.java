@@ -11,23 +11,31 @@ import magisterka.entity.Folder;
 
 public class DeleteData {
 	
-	public boolean deleteData(){
+	private SessionFactory factory;
+	private Session session;
+	private Criteria crit;
+	
+	private String foldername;
+	private Folder fd;
+	
+	@SuppressWarnings("deprecation")
+	public void deleteData(){
 		
-		SessionFactory factory = new Configuration()
+		factory = new Configuration()
 				.configure("hibernate.cfg.xml")
 				.addAnnotatedClass(DataFile.class)
 				.addAnnotatedClass(Folder.class)
 				.buildSessionFactory();
 
-		Session session = factory.getCurrentSession();
-		Folder fd;
-		String foldername = "Dane Pomiarowe";
+		session = factory.getCurrentSession();
+		foldername= "Dane Pomiarowe";
+		
 		try{
 			session.beginTransaction();
 		
 			System.out.println("Deleting Folder");
 			
-			Criteria crit = session.createCriteria(Folder.class);
+			crit = session.createCriteria(Folder.class);
 			crit.add(Restrictions.eq("name", foldername));
 			fd = (Folder)crit.list().get(0);
 			
@@ -39,8 +47,7 @@ public class DeleteData {
 			session.close();
 			factory.close();
 		}
-		
-		return false;
+
 	}
 
 }

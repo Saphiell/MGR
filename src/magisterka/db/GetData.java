@@ -1,38 +1,42 @@
 package magisterka.db;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.criterion.Restrictions;
-import org.hibernate.query.Query;
 
 import magisterka.entity.DataFile;
 import magisterka.entity.Folder;
 
 public class GetData {
 	
-	public void getData(){
+	private SessionFactory factory;
+	private Session session;
+	private Criteria crit;
+	private Folder fd;
+	private String foldername;
+	
+	@SuppressWarnings("deprecation")
+	public void getDataUsingFolderName(){
 		
-		SessionFactory factory = new Configuration()
+	    factory = new Configuration()
 				.configure("hibernate.cfg.xml")
 				.addAnnotatedClass(DataFile.class)
 				.addAnnotatedClass(Folder.class)
 				.buildSessionFactory();
 
-		Session session = factory.getCurrentSession();
-		Folder fd;
-		String foldername = "Dane Pomiarowe";
-
+		session = factory.getCurrentSession();
+		
+		foldername = "Dane Pomiarowe";
+		
 		try{
 			session.beginTransaction();
 			
-			Criteria crit = session.createCriteria(Folder.class);
-			 crit.add(Restrictions.eq("name", foldername));
+			crit = session.createCriteria(Folder.class);
+			crit.add(Restrictions.eq("name", foldername));
 			fd = (Folder)crit.list().get(0);
+			//fd.getData();
 			
 			System.out.println("Get DataFile using name of folder they are in");
 			
@@ -44,7 +48,6 @@ public class GetData {
 			factory.close();
 		}
 		
-		//datalist = fd.getData();
 	}
 
 }
