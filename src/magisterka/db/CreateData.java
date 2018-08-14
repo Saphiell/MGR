@@ -6,6 +6,8 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import filesUtils.ChooseFiles;
 import filesUtils.LoadFiles;
@@ -21,12 +23,13 @@ public class CreateData {
 	
 	private List<String> datafromfiles,filesname;
 	private List<String[]> partsfromfiles;
+	private List<Folder> fl;
 
 	
 	private String pathtoFiles,foldername;
 	private String[] partsoffolders;
 	
-	
+	@RequestMapping(method = RequestMethod.POST,params = {"add"})
 	public void addData(){
 		
 		SessionFactory factory = new Configuration()
@@ -44,11 +47,8 @@ public class CreateData {
 		
 
 		datafromfiles = cf.FolderChooser();
+		fl = gd.getFolders();
 		
-		/*
-		 * SprawdŸ czy w bazie nie ma plików o tej samej nazwie, jeœli tak to nie dodawaj, jeœli nie ma czêœci to dodaj tylko te co ich nie ma
-		 * Jebaæ foldery, ale przydadz¹ siê 
-		 */
 		
 		try{
 			
@@ -60,11 +60,11 @@ public class CreateData {
 				lf.Separate(datafromfiles, partsfromfiles, " ");
 				Folder folder; 
 				DataFile df;
-				List<Folder> fl;
+				
 				
 				session.beginTransaction();
 				
-				fl = session.createQuery("from Folder").getResultList();
+				
 				for(Folder f:fl){
 					if(f.getName().equals(foldername)){
 						System.out.println("Folder name is already taken");

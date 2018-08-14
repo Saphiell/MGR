@@ -13,6 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import magisterka.db.GetData;
+
 
 @Entity
 @Table(name="folder")
@@ -29,6 +31,9 @@ public class Folder {
 	@OneToMany(fetch = FetchType.LAZY,mappedBy="folder",
 				cascade=CascadeType.ALL)
 	private List<DataFile> data;
+	
+	private List<String> foldernames;
+	
 	
 	public Folder(){}
 
@@ -73,6 +78,20 @@ public class Folder {
 	@Override
 	public String toString() {
 		return "Folder [id=" + id + ", name=" + name + "]";
+	}
+
+	public List<String> getFoldernames() {
+		GetData gd = new GetData();
+		List<Folder> lf = gd.getFolders();
+		for(Folder f: lf){
+			foldernames.add(f.getName());
+		}
+		return foldernames;
+	}
+
+	public void setFoldernames(List<String> foldernames) {
+		
+		this.foldernames = foldernames;
 	}
 	
 	

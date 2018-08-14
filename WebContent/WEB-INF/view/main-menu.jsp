@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix = "form" uri = "http://www.springframework.org/tags/form" %>    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <style>
@@ -37,8 +38,14 @@
 <div class="body">
 	<div class="left1" >
 		<h3> Badkasldsak</h3>
-		<button>Open</button>
-	
+		<form:form>
+			<form:select path="datafolders">
+				<form:options items = "${Folder.foldernames}"/>	
+			</form:select>
+			<form:button type = "submit" name="action" value="add"/>
+			<form:button type = "submit" name="action" value="delete"/>
+			<form:button type = "submit" name="action" value="get"/>
+		</form:form>		
 	</div>
 	<div class="map">
 		<h3>gafasfsafas</h3>	
