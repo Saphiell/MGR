@@ -29,7 +29,7 @@ public class CreateData {
 	private String pathtoFiles,foldername;
 	private String[] partsoffolders;
 	
-	@RequestMapping(method = RequestMethod.POST,params = {"add"})
+	
 	public void addData(){
 		
 		SessionFactory factory = new Configuration()
@@ -47,7 +47,7 @@ public class CreateData {
 		
 
 		datafromfiles = cf.FolderChooser();
-		fl = gd.getFolders();
+		//fl = gd.getFolders();
 		
 		
 		try{
@@ -60,27 +60,32 @@ public class CreateData {
 				lf.Separate(datafromfiles, partsfromfiles, " ");
 				Folder folder; 
 				DataFile df;
-				
+				boolean flag = true;
 				
 				session.beginTransaction();
 				
+				fl = session.createQuery("from Folder").getResultList();
 				
-				for(Folder f:fl){
-					if(f.getName().equals(foldername)){
-						System.out.println("Folder name is already taken");
-						
-					}
-					else{
-						folder = new Folder(foldername);
-						System.out.println("Adding datafiles to folder list");
-						for(String[] s: partsfromfiles){
-							df = new DataFile(s[0],s[1],s[2]);
-							folder.addDataFile(df);
-							session.save(df);
-						}
-						session.save(folder);
+				if(fl!=null){
+					for(Folder f:fl){
+						if(f.getName().equals(foldername)){
+							System.out.println("Folder name is already taken");
+							flag = false;
+						}	
 					}
 				}
+				
+				if(flag){
+					folder = new Folder(foldername);
+					System.out.println("Adding datafiles to folder list");
+					for(String[] s: partsfromfiles){
+						df = new DataFile(s[0],s[1],s[2]);
+						folder.addDataFile(df);
+						session.save(df);
+					}
+					session.save(folder);
+				}
+				
 				
 				session.getTransaction().commit();
 				

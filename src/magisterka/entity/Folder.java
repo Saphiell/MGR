@@ -32,7 +32,7 @@ public class Folder {
 				cascade=CascadeType.ALL)
 	private List<DataFile> data;
 	
-	private List<String> foldernames;
+	//private List<String> foldernames;
 	
 	
 	public Folder(){}
@@ -80,7 +80,7 @@ public class Folder {
 		return "Folder [id=" + id + ", name=" + name + "]";
 	}
 
-	public List<String> getFoldernames() {
+	/*public List<String> getFoldernames() {
 		GetData gd = new GetData();
 		List<Folder> lf = gd.getFolders();
 		for(Folder f: lf){
@@ -93,7 +93,7 @@ public class Folder {
 		
 		this.foldernames = foldernames;
 	}
-	
+	*/
 	
 	
 }

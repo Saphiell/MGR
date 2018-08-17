@@ -38,14 +38,13 @@
 <div class="body">
 	<div class="left1" >
 		<h3> Badkasldsak</h3>
-		<form:form>
-			<form:select path="datafolders">
-				<form:options items = "${Folder.foldernames}"/>	
-			</form:select>
-			<form:button type = "submit" name="action" value="add"/>
-			<form:button type = "submit" name="action" value="delete"/>
-			<form:button type = "submit" name="action" value="get"/>
-		</form:form>		
+		<form action="buttonForm" method="GET">	
+			<input type = "submit" name="button" value="Add"/>
+			<br><br>
+			<input type = "submit" name="button" value="Delete"/>
+			<br><br>
+			<input type = "submit" name="button" value="Get"/>
+		</form>		
 	</div>
 	<div class="map">
 		<h3>gafasfsafas</h3>	

@@ -23,7 +23,6 @@ public class GetData {
 	private String foldername;
 	
 	@SuppressWarnings("deprecation")
-	@RequestMapping(method = RequestMethod.POST,params = {"get"})
 	public void getDataUsingFolderName(){
 		
 	    factory = new Configuration()
@@ -56,29 +55,6 @@ public class GetData {
 		
 	}
 	
-	public List<Folder> getFolders(){
-		factory = new Configuration()
-				.configure("hibernate.cfg.xml")
-				.addAnnotatedClass(DataFile.class)
-				.addAnnotatedClass(Folder.class)
-				.buildSessionFactory();
-
-		session = factory.getCurrentSession();
-		List<Folder> fl = new ArrayList<>();
-		
-		try{
-			session.beginTransaction();
-			
-			fl = session.createQuery("from Folder").getResultList();
-			session.getTransaction().commit();
-
-			System.out.println("Done");
-		}finally{
-			session.close();
-			factory.close();
-		}
-		
-		return fl;
-	}
+	
 
 }

@@ -21,7 +21,6 @@ public class DeleteData {
 	private Folder fd;
 	
 	@SuppressWarnings("deprecation")
-	@RequestMapping(method = RequestMethod.POST,params = {"delete"})
 	public void deleteData(){
 		
 		factory = new Configuration()

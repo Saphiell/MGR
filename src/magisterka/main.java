@@ -12,8 +12,8 @@ public class main {
 		CreateData cd = new CreateData();
 		DeleteData dd = new DeleteData();
 		GetData gd = new GetData();
-		cd.addData();
-		//dd.deleteData();
+		//cd.addData();
+		dd.deleteData();
 		//gd.getOnlyFolderName();
 		//dd.deleteData();
 	
