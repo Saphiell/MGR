@@ -38,13 +38,21 @@
 <div class="body">
 	<div class="left1" >
 		<h3> Badkasldsak</h3>
-		<form action="buttonForm" method="GET">	
-			<input type = "submit" name="button" value="Add"/>
+			<form:form action = "getFolders" modelAttribute = "folders"  method="POST">
+				<form:select path="folderName">
+						<form:option value="0" label="Select an Option" />
+						<form:options items = "${Folder.foldernames}"/>
+				</form:select>
+			</form:form>
 			<br><br>
-			<input type = "submit" name="button" value="Delete"/>
-			<br><br>
-			<input type = "submit" name="button" value="Get"/>
-		</form>		
+			<form action="buttonForm" method="GET">	
+				
+				<input type = "submit" name="button" value="Add"/>
+				<br><br>
+				<input type = "submit" name="button" value="Delete"/>
+				<br><br>
+				<input type = "submit" name="button" value="Get"/>
+			</form>		
 	</div>
 	<div class="map">
 		<h3>gafasfsafas</h3>	

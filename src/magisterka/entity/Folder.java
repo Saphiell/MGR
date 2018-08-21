@@ -2,6 +2,7 @@ package magisterka.entity;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -12,6 +13,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import magisterka.db.GetData;
 
@@ -32,7 +34,11 @@ public class Folder {
 				cascade=CascadeType.ALL)
 	private List<DataFile> data;
 	
-	//private List<String> foldernames;
+	@Transient
+	private List<String> foldernames;
+	
+	@Transient
+	public String folderName;
 	
 	
 	public Folder(){}
@@ -80,20 +86,19 @@ public class Folder {
 		return "Folder [id=" + id + ", name=" + name + "]";
 	}
 
-	/*public List<String> getFoldernames() {
+	public List<String> getFoldernames() {
 		GetData gd = new GetData();
-		List<Folder> lf = gd.getFolders();
-		for(Folder f: lf){
-			foldernames.add(f.getName());
-		}
-		return foldernames;
+		return gd.GetFolders().stream().filter(i->i!=null).map(i -> i.getName()).collect(Collectors.toList());
 	}
 
-	public void setFoldernames(List<String> foldernames) {
-		
-		this.foldernames = foldernames;
-	}
-	*/
 	
+	public String getFolderName() {
+		return folderName;
+	}
+
+	public void setFolderName(String folderName) {
+		this.folderName = folderName;
+	}
+
 	
 }

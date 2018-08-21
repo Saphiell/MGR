@@ -20,10 +20,14 @@ public class GetData {
 	private Session session;
 	private Criteria crit;
 	private Folder fd;
-	private String foldername;
+	private List<Folder> folderList;
+	
+	
+	
+	
 	
 	@SuppressWarnings("deprecation")
-	public void getDataUsingFolderName(){
+	public void getDataUsingFolderName(String foldername){
 		
 	    factory = new Configuration()
 				.configure("hibernate.cfg.xml")
@@ -53,6 +57,36 @@ public class GetData {
 			factory.close();
 		}
 		
+	}
+	
+	public List<Folder> GetFolders(){
+		factory = new Configuration()
+				.configure("hibernate.cfg.xml")
+				.addAnnotatedClass(DataFile.class)
+				.addAnnotatedClass(Folder.class)
+				.buildSessionFactory();
+
+		session = factory.getCurrentSession();
+		
+		try{
+			session.beginTransaction();
+			
+			folderList = session.createQuery("from Folder").getResultList();			
+			//fd.getData();
+			
+			System.out.println("Get Folders");
+			
+			session.getTransaction().commit();
+
+			System.out.println("Done");
+		}catch(NullPointerException ex){
+			ex.getMessage();
+		}finally{
+			session.close();
+			factory.close();
+		}
+		
+		return folderList;
 	}
 	
 	
