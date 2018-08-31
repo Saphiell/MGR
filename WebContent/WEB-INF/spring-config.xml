@@ -12,8 +12,9 @@
         http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
 	<!-- Step 3: Add support for component scanning -->
-	<context:component-scan base-package="magisterka.springfiles" />
-
+	
+	<context:component-scan base-package="magisterka.db,magisterka.springfiles.controllers,magisterka.springfiles.services" />
+	
 	<!-- Step 4: Add support for conversion, formatting and validation support -->
 	<mvc:annotation-driven/>
 
@@ -30,9 +31,17 @@
 			<property name="basenames" value = "resources/messages"/>		
 			
 	</bean>
+	
+	<bean id="folderDAO" class="magisterka.db.FolderDAOImpl">
+		
+	</bean>
+	<bean id="personService" class="magisterka.springfiles.services.FolderServiceImpl">
+		<property name="folderDAO" ref="folderDAO"></property>
+	</bean>
+	
+	
+
+
+
 </beans>
-
-
-
-
 

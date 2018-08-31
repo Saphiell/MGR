@@ -1,4 +1,4 @@
-package magisterka.db;
+package magisterka.db.methods;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +19,7 @@ public class CreateData {
 	private ChooseFiles cf;
 	private Session session;
 	private LoadFiles lf;
-	private GetData gd;
+	private GetFromDB gd;
 	
 	private List<String> datafromfiles,filesname;
 	private List<String[]> partsfromfiles;

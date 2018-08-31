@@ -15,7 +15,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
-import magisterka.db.GetData;
+import magisterka.db.methods.GetFromDB;
 
 
 @Entity
@@ -85,7 +85,7 @@ public class Folder {
 	public String toString() {
 		return "Folder [id=" + id + ", name=" + name + "]";
 	}
-
+/*
 	public List<String> getFoldernames() {
 		GetData gd = new GetData();
 		return gd.GetFolders().stream().filter(i->i!=null).map(i -> i.getName()).collect(Collectors.toList());
@@ -99,6 +99,6 @@ public class Folder {
 	public void setFolderName(String folderName) {
 		this.folderName = folderName;
 	}
-
+*/
 	
 }

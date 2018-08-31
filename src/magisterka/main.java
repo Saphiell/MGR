@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import magisterka.db.CreateData;
-import magisterka.db.DeleteData;
-import magisterka.db.GetData;
+import magisterka.db.methods.CreateData;
+import magisterka.db.methods.DeleteData;
+import magisterka.db.methods.GetFromDB;
 import magisterka.entity.Folder;
 
 public class main {
@@ -16,7 +16,7 @@ public class main {
 	
 		CreateData cd = new CreateData();
 		DeleteData dd = new DeleteData();
-		GetData gd = new GetData();
+		GetFromDB gd = new GetFromDB();
 		cd.addData();
 		//dd.deleteData();
 		//gd.getOnlyFolderName();

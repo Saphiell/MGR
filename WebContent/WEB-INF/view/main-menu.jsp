@@ -38,12 +38,7 @@
 <div class="body">
 	<div class="left1" >
 		<h3> Badkasldsak</h3>
-			<form:form action = "getFolders" modelAttribute = "folders"  method="POST">
-				<form:select path="folderName">
-						<form:option value="0" label="Select an Option" />
-						<form:options items = "${Folder.foldernames}"/>
-				</form:select>
-			</form:form>
+			
 			<br><br>
 			<form action="buttonForm" method="GET">	
 				

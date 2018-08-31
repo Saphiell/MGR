@@ -1,4 +1,4 @@
-package magisterka.db;
+package magisterka.db.methods;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import magisterka.entity.DataFile;
 import magisterka.entity.Folder;
 
-public class GetData {
+public class GetFromDB {
 	
 	private SessionFactory factory;
 	private Session session;
@@ -27,7 +27,7 @@ public class GetData {
 	
 	
 	@SuppressWarnings("deprecation")
-	public void getDataUsingFolderName(String foldername){
+	public Folder getDataUsingFolderName(String foldername){
 		
 	    factory = new Configuration()
 				.configure("hibernate.cfg.xml")
@@ -56,9 +56,10 @@ public class GetData {
 			session.close();
 			factory.close();
 		}
-		
+		return fd;
 	}
 	
+	@SuppressWarnings("unchecked")
 	public List<Folder> GetFolders(){
 		factory = new Configuration()
 				.configure("hibernate.cfg.xml")

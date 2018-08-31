@@ -1,4 +1,4 @@
-package magisterka.db;
+package magisterka.db.methods;
 
 import org.hibernate.Criteria;
 import org.hibernate.Session;
@@ -17,11 +17,11 @@ public class DeleteData {
 	private Session session;
 	private Criteria crit;
 	
-	private String foldername;
+	
 	private Folder fd;
 	
 	@SuppressWarnings("deprecation")
-	public void deleteData(){
+	public void deleteFolder(String foldername){
 		
 		factory = new Configuration()
 				.configure("hibernate.cfg.xml")
