@@ -1,5 +1,7 @@
 package magisterka.springfiles.controllers;
 
+
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,9 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import magisterka.db.methods.CreateData;
-import magisterka.db.methods.GetFromDB;
 import magisterka.entity.Folder;
 import magisterka.springfiles.services.FolderService;
+
 
 
 @Controller
