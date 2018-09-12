@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import magisterka.db.FolderDAOImpl;
 import magisterka.db.methods.CreateData;
 import magisterka.db.methods.DeleteData;
 import magisterka.db.methods.GetFromDB;
@@ -14,18 +15,13 @@ public class main {
 	public static void main(String[] args) {
 		
 	
-		CreateData cd = new CreateData();
-		DeleteData dd = new DeleteData();
-		GetFromDB gd = new GetFromDB();
-		cd.addData();
+		FolderDAOImpl fd = new FolderDAOImpl();
 		//dd.deleteData();
 		//gd.getOnlyFolderName();
 		//dd.deleteData();
-		List<String> foldernames = new ArrayList<>();
-		//List<Folder> fl = gd.GetFolders();
+		GetFromDB dg = new GetFromDB();
+		dg.GetFolders().stream().forEach(i-> System.out.println(i));
 		
-		
-		foldernames.forEach(i-> System.out.println(i));
 		//ChooseFiles d = new ChooseFiles();
 		//String path = d.FolderChooser();
 		

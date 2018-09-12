@@ -9,8 +9,8 @@ public class TestJdbc {
 		
 		
 		String jdbcURL = "jdbc:mysql://localhost:3306/mgr?useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
-		String user = "hbstudent";
-		String pass = "hbstudent";
+		String user = "magisterka";
+		String pass = "magisterka";
 		try{
 			
 			System.out.println("Connecting to db: "+ jdbcURL);

@@ -68,7 +68,7 @@ public class GetFromDB {
 				.buildSessionFactory();
 
 		session = factory.getCurrentSession();
-		
+		folderList = new ArrayList<>();
 		try{
 			session.beginTransaction();
 			

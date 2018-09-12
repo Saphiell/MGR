@@ -5,13 +5,13 @@
 <html>
 <style>
 	.left1{
-		width: 10%;
+		width: 20%;
 		float:left;
 		background-color: gray;
 		height: 100%;
 	}
 	.map{
-		width: 90%;
+		width: 80%;
 		float:right;
 		background-color: green;
 		height:100%;
@@ -40,6 +40,13 @@
 		<h3> Badkasldsak</h3>
 			
 			<br><br>
+			
+			<form:form modelAttribute="folderForm" action="getfoldernames" method = "get">
+				<form:select path="name">
+					<form:option value="0" label="Select an Option" />
+					<form:options items = "${foldernames}"/>
+				</form:select>
+			</form:form>
 			<form action="buttonForm" method="GET">	
 				
 				<input type = "submit" name="button" value="Add"/>

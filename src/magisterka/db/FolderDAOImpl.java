@@ -34,12 +34,8 @@ public class FolderDAOImpl implements FolderDAO {
 
 	@Override
 	public List<Folder> listFolders() {
-		List<Folder> folderList = gd.GetFolders();
-		for(Folder f : folderList){
-			System.out.println("Folder " + f);
-		}
 		
-		return folderList;
+		return gd.GetFolders();
 	}
 
 	@Override
