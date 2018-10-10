@@ -30,7 +30,7 @@ public class DeleteData {
 				.buildSessionFactory();
 
 		session = factory.getCurrentSession();
-		foldername= "Dane Pomiarowe";
+		
 		
 		try{
 			session.beginTransaction();
@@ -45,6 +45,10 @@ public class DeleteData {
 			
 			session.getTransaction().commit();
 			System.out.println("Done");
+		}
+		catch(Exception e){
+			session.cancelQuery();
+			
 		}finally{
 			session.close();
 			factory.close();
