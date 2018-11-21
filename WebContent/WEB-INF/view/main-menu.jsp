@@ -42,11 +42,22 @@
 			<br><br>
 			
 			<form:form modelAttribute="folderForm" action="getfoldernames" method = "get">
-				<form:select path="name">
+				
+				
+				
+				<form:select path= "id" >
+					
 					<form:option value="0" label="Select an Option" />
-					<form:options items = "${foldernames}" name = "fafa" />
+					<form:options items ="${folders}" multiple="true" itemLabel="name" itemValue="id" />
 					
 				</form:select>
+				
+				<input type = "hidden" name="folder" value=""/>
+				<input type = "submit" class="button" name = "Add" value="AddFolder"/>
+				<br><br>
+				<input type = "submit" class="button" name="Delete" value="DeleteFolder"/>
+				<br><br>
+				<input type = "submit" class="button" name="Get" value="GetData"/>
 			</form:form>
 			
 			<br>
@@ -60,6 +71,8 @@
 			</form>		
 			
 	</div>
+	
+	
 	<div class="map">
 		<h3>gafasfsafas</h3>	
 	</div>

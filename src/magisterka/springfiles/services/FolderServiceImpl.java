@@ -30,8 +30,8 @@ public class FolderServiceImpl implements FolderService {
 
 	@Override
 	@Transactional
-	public void deleteFolder(String fname) {
-		this.folderDAO.deleteFolder(fname);
+	public void deleteFolder(int theId) {
+		this.folderDAO.deleteFolder(theId);
 	}
 
 	@Override
@@ -43,9 +43,9 @@ public class FolderServiceImpl implements FolderService {
 
 	@Override
 	@Transactional
-	public Folder getFolderByName(String fname) {
+	public Folder getFolderByName(int theId) {
 		// TODO Auto-generated method stub
-		return this.folderDAO.getFolderByName(fname);
+		return this.folderDAO.getFolderByName(theId);
 	}
 
 }

@@ -22,8 +22,10 @@
         <property name="show_sql">true</property>
 
 		<!-- Set the current session context -->
-		<property name="current_session_context_class">thread</property>
- 
+		<property name="hibernate.current_session_context_class">
+			org.hibernate.context.internal.ThreadLocalSessionContext
+		</property>
+
     </session-factory>
 
 </hibernate-configuration>

@@ -7,7 +7,7 @@ import magisterka.entity.Folder;
 public interface FolderService {
 	
 	public void addFolder();
-	public void deleteFolder(String fname);
+	public void deleteFolder(int theId);
 	public List<Folder> listFolders();
-	public Folder getFolderByName(String fname);
+	public Folder getFolderByName(int theId);
 }
