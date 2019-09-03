@@ -4,8 +4,7 @@
   <artifactId>Magisterka</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>war</packaging>
-  <build>
-  
+  <build>  
     <sourceDirectory>src</sourceDirectory>
     <resources>
       <resource>
@@ -30,10 +29,9 @@
         <configuration>
           <warSourceDirectory>WebContent</warSourceDirectory>
         </configuration>
-      </plugin>
+      </plugin> 
     </plugins>
   </build>
-  
   <dependencies>
 	    <dependency>
 	      <groupId>junit</groupId>
@@ -109,7 +107,7 @@
 		    <artifactId>jstl-api</artifactId>
 		    <version>1.2</version>
 		</dependency>
-
+		
 		<dependency>
 		    <groupId>mysql</groupId>
 		    <artifactId>mysql-connector-java</artifactId>
@@ -121,6 +119,10 @@
 		    <artifactId>commons-dbcp2</artifactId>
 		    <version>2.5.0</version>
 		</dependency>
-			
+		<dependency>
+		    <groupId>gov.nist.math</groupId>
+		    <artifactId>jama</artifactId>
+		    <version>1.0.3</version>
+		</dependency>	
 	  </dependencies>
 </project>

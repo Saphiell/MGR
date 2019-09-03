@@ -30,6 +30,9 @@ public class Folder {
 	@Column(name = "folder_name")
 	private String name;
 	
+	@Column(name = "folder_description")
+	private String description;
+	
 	@OneToMany(fetch = FetchType.LAZY,mappedBy="folder",
 				cascade=CascadeType.ALL)
 	private List<DataFile> data;
@@ -46,6 +49,12 @@ public class Folder {
 	public Folder(String name) {
 		super();
 		this.name = name;
+	}
+	
+	public Folder(String name, String description) {
+		super();
+		this.name = name;
+		this.description = description;
 	}
 
 	public int getId() {
@@ -100,5 +109,13 @@ public class Folder {
 		this.folderName = folderName;
 	}
 */
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
 	
 }

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import magisterka.db.FolderDAO;
+import magisterka.entity.DataFile;
 import magisterka.entity.Folder;
 
 @Service
@@ -43,9 +44,23 @@ public class FolderServiceImpl implements FolderService {
 
 	@Override
 	@Transactional
-	public Folder getFolderByName(int theId) {
-		// TODO Auto-generated method stub
-		return this.folderDAO.getFolderByName(theId);
+	public Folder getFolderById(int theId) {
+		
+		return this.folderDAO.getFolderById(theId);
+	}
+
+	@Override
+	@Transactional
+	public Folder updateFolderWithDescription(int theId, String description) {
+		
+		return this.folderDAO.updateFolderWithDescription(theId, description);
+	}
+
+	@Override
+	@Transactional
+	public List<DataFile> getDataForFolder(int theId) {
+		
+		return this.folderDAO.getDataForFolder(theId);
 	}
 
 }

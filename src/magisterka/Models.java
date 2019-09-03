@@ -1,17 +1,29 @@
 package magisterka;
 
+import java.util.ArrayList;
+
+import magisterka.models.ComputedData;
+import magisterka.models.SingleValue;
+
 public class Models {
 
-	public double Logratio(double[] params){
+	public ComputedData Logratio(double[] params){
+		ArrayList<SingleValue> listOfValues = new ArrayList<SingleValue>();
 		
 		
-		return 0;
+		
+		
+		return new ComputedData(listOfValues);
 	}
 	
-	public double Analytics(double[] params){
+	public ComputedData Analytics(double[] params){
+		
+		ArrayList<SingleValue> listOfValues = new ArrayList<SingleValue>();
 		
 		
-		return 0;
+		
+		
+		return new ComputedData(listOfValues);
 	}
 	
 }

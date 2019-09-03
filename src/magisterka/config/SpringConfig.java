@@ -64,11 +64,12 @@ public class SpringConfig implements WebMvcConfigurer{
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
 
        // Register resource handler for CSS and JS
-       registry.addResourceHandler("/resources/**").addResourceLocations("/WEB-INF/resources/")
+       registry.addResourceHandler("/resources/**").addResourceLocations("/resources/")
             .setCacheControl(CacheControl.maxAge(2, TimeUnit.HOURS).cachePublic());
-
+   
+       
        // Register resource handler for images
-       registry.addResourceHandler("/images/**").addResourceLocations("/WEB-INF/images/")
+       registry.addResourceHandler("*/images/**").addResourceLocations("/WEB-INF/images/")
             .setCacheControl(CacheControl.maxAge(2, TimeUnit.HOURS).cachePublic());
     }
 	

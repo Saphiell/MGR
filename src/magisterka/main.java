@@ -1,7 +1,10 @@
 package magisterka;
 
+import java.awt.Point;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import magisterka.db.FolderDAOImpl;
@@ -14,18 +17,14 @@ public class main {
 
 	public static void main(String[] args) {
 		
-	
-		FolderDAOImpl fd = new FolderDAOImpl();
-		//dd.deleteData();
-		//gd.getOnlyFolderName();
-		//dd.deleteData();
-		GetFromDB dg = new GetFromDB();
-		dg.GetFolders().stream().forEach(i-> System.out.println(i));
+		GetFromDB gdb= new GetFromDB();
+		FolderDAOImpl dasd = new FolderDAOImpl();
+		List<Folder> fads = dasd.listFolders();
+		Folder f = gdb.getDataUsingFolderName("Dane pomiarowe");
 		
-		//ChooseFiles d = new ChooseFiles();
-		//String path = d.FolderChooser();
-		
-		//System.out.println(path);
+		StumpfCalibration s = new StumpfCalibration();
+		double[] a = {1,2,3};
+		s.CalibrateStumpf(new HashMap<Point,Double>(), 0 ,0);
 	}
 
 }

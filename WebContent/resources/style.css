@@ -1,0 +1,115 @@
+
+.menu{
+    display:flex;
+    flex-direction: column;
+    background-color:rgb(247, 244, 244);
+    border: 2px solid #ccc;
+    background-color:rgb(247, 244, 244);
+    max-width: min-content;
+}
+
+.graphsPages{
+    width:inherit;
+    display:flex;
+    flex-direction: column;
+    flex-flow:column;
+
+}
+
+
+.descriptionPage{
+    width:fit-content;
+    height:100%;
+    border: 2px solid #ccc;
+    background-color:rgb(247, 244, 244);
+    
+    
+}
+
+ .label{
+  background-color:  #125491;
+  color:#fff;
+  width: 100%;
+  position: relative;
+  margin-bottom:2px;
+ }
+
+
+.graphLabel {
+  margin-top:1%;
+  color: #003865;
+  font-weight: bold;
+  display: block;
+  font-size: 14px;
+  width: fit-content;
+  float: left;
+  }
+ .graphLabel:after { content: ": " }
+
+ input[type='checkbox'] {
+  width:30px;
+  height:30px;
+
+  border-radius:5px;
+  border:2px solid #555;
+}
+input[type='checkbox']:checked {
+  background: #abd;
+}
+
+
+.mainPage{
+    width:100%;
+    height:inherit;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border: 2px solid #ccc;
+    background-color:rgb(252, 252, 252);
+    
+}
+
+
+
+.appGraph{
+
+    margin:1%;
+    width:-webkit-fill-available; 
+    
+}
+
+
+
+
+
+
+.description{
+    height:inherit;
+    display:flex;
+    flex-direction: column;
+    
+}
+
+
+.btn {
+  text-align: center;
+  font-size: 0.7em;
+  text-transform: uppercase;
+  background: #42473d;
+  padding: 1em 0.5em;
+  color: #395ce8;
+  line-height: normal;
+  margin: 1%;
+ 
+}
+
+
+.btn-primary{
+	color: #3B60FF;
+}
+
+.OptionLabel{
+	font-size:14px;
+	font-style:italic;
+	
+}

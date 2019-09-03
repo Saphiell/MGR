@@ -22,5 +22,6 @@ CREATE TABLE `data`(
 CREATE TABLE `folder` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `folder_name` varchar(128) DEFAULT NULL,
+  `folder_description` varchar(MAX) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;

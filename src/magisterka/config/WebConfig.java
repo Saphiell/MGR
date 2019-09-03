@@ -21,7 +21,7 @@ public class WebConfig implements WebApplicationInitializer {
 	            "dispatcher", new DispatcherServlet(appContext));
 	    dispatcher.setLoadOnStartup(1);
 	    dispatcher.addMapping("/");
-		
+
 	}
 	
 	

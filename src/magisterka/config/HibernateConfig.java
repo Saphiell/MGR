@@ -65,3 +65,4 @@ public class HibernateConfig {
 		return txManager;
 	}
 }
+
